@@ -26,7 +26,13 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build with Maven
-    - run: mvn -e -B package --file pom.xml
-    - run: mkdir /opt/tomcat/
-    - run: cp /home/runner/work/github_training_code/github_training_code/target/my-app.war /opt/tomcat/
-    - run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: mvn -e -B package --file pom.xml
+
+    - name: make tomcat dir
+      run: mkdir /opt/tomcat/
+
+    - name: copy war
+      run: cp /home/runner/work/github_training_code/github_training_code/target/my-app.war /opt/tomcat/
+
+    - name: deploy docker
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)

@@ -34,5 +34,8 @@ jobs:
     - name: copy war
       run: cp /home/runner/work/github_training_code/github_training_code/target/my-app.war /opt/tomcat/
 
+    - name: list war
+      run: ls /opt/tomcat/
+
     - name: deploy docker
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)

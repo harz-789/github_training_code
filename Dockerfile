@@ -9,7 +9,7 @@ RUN mkdir /opt/tomcat/
 
 RUN curl -O https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.64/bin/apache-tomcat-9.0.64.tar.gz
 RUN ls
-ADD /workspace/apache-tomcat-9.0.64.tar.gz /opt/tomcat/
+RUN tar xvf /workspace/apache-tomcat-9.0.64.tar.gz 
 
 FROM openjdk:14-slim
 COPY --from=build /workspace/target/my-app.war /opt/tomcat/webapps/
